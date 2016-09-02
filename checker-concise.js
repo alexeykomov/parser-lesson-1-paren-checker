@@ -22,7 +22,7 @@ function throwSyntaxError(aSymbol, aIndex, aStack) {
 function syntaxCheck(str) {
   while(index < str.length) {
     const char = getNextChar(str);
-    if (opening.includes(char) {
+    if (opening.includes(char)) {
       stack.push(char);
     }
     if (char in closingToOpening) {
