@@ -4,12 +4,14 @@ let stack = [];
 
 let index = 0;
 
-const opening = ['(', '{', '['];
 const closingToOpening = {
   ')' : '(',
   '}' : '{',
   ']' : '[',
 }
+//['(', '{', '['];
+const opening = Object.keys(closingToOpening).map(key => closingToOpening[key]);
+
 
 function getNextChar(aString) {
   return aString.charAt(index++);
