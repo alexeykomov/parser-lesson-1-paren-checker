@@ -1,4 +1,4 @@
-const str  = '(}[{one}])';
+const str  = '(((}[{one}])';
 
 let stack = [];
 
@@ -8,8 +8,8 @@ function getNextChar(aString) {
   return aString.charAt(index++);
 }
 
-function throwSyntaxError(aSymbol, aIndex) {
-  throw new Error(`Expected ${top} at ${index}.`);
+function throwSyntaxError(aSymbol, aIndex, aStack) {
+  throw new Error(`Expected ${aSymbol} at position ${aIndex}. Stack is ${aStack}.`);
 }
 
 function syntaxCheck(str) {
@@ -23,7 +23,7 @@ function syntaxCheck(str) {
       if (top === 'PAREN') {
         stack.pop()
       } else {
-        throwSyntaxError(top, index);
+        throwSyntaxError(top, index, stack);
       }
     }
     if (char === '[') {
@@ -34,7 +34,7 @@ function syntaxCheck(str) {
       if (top === 'BRACKET') {
         stack.pop()
       } else {
-        throwSyntaxError(top, index);
+        throwSyntaxError(top, index, stack);
       }
     }
     if (char === '{') {
@@ -45,8 +45,11 @@ function syntaxCheck(str) {
       if (top === 'CURLY') {
         stack.pop()
       } else {
-        throwSyntaxError(top, index);
+        throwSyntaxError(top, index, stack);
       }
     }
   }
 }
+
+syntaxCheck(str);
+console.log('Syntax is right.');
