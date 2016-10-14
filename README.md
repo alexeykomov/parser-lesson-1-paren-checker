@@ -7,4 +7,4 @@ Here, we build program that checks whether every open paren (or curly, or bracke
 
 ## How to launch
 1. Get [node](https://nodejs.org/en/) of at least 6th version, this way you won't need any transpilers.
-2. Say ```node checker.js```.
+2. ```$ node checker.js```.
